@@ -1,0 +1,115 @@
+# go-cqhttp Default profile
+
+account: # Account related
+  uin: 3410140044 # QQ account
+  password: '' # If the password is empty, use Scan QR code to log in
+  encrypt: false  # Whether to enable password encryption
+  status: 0      #  Online Status  Refer to https://docs.go-cqhttp.org/guide/config.html # Online status
+  relogin: # Reconnect settings
+    delay: 3   # First reconnection delay, in seconds
+    interval: 3   # Reconnection interval
+    max-times: 0  # The maximum number of reconnects, 0 is unlimited
+
+  # Whether to use the new address issued by the server for reconnection
+  # Note that this setting may result in worse connections on overseas servers
+  use-sso-address: true
+  # Whether to allow temporary session messages to be sent
+  allow-temp-session: false
+
+heartbeat:
+  # Heartbeat rate, in seconds
+  # -1 to turn off the heartbeat
+  interval: 5
+
+message:
+  # Report data type
+  # Optional: string, array
+  post-format: string
+  # Whether to ignore invalid CQ codes, if false will send them as is
+  ignore-invalid-cqcode: false
+  # Whether to force fragmentation to send messages
+  # Sharded sending will bring faster speed
+  # But there will be some problems with compatibility
+  force-fragment: false
+  # Whether to send URL fragments
+  fix-url: false
+  # Download images, etc. Request Network Proxy
+  proxy-rewrite: ''
+  # Whether to report its own message
+  report-self-message: false
+  # Remove the Ats attached to Reply on the server
+  remove-reply-at: false
+  # Additional information for Reply
+  extra-reply-data: false
+  # Skip MIME scanning, ignore error data
+  skip-mime-scan: false
+  # Whether to convert WebP images automatically
+  convert-webp-image: false
+
+output:
+  # Log levels trace, debug, info, warn, error
+  log-level: warn
+  # Log Duration per day. Logs older than this time will be automatically deleted. Set to 0 for permanent retention.
+  log-aging: 15
+  # Whether to force the creation of a brand new file storage log every time it starts. If false, the log file created at the last startup will continue to be written
+  log-force-new: true
+  # Whether to enable log color
+  log-colorful: true
+  # Whether to enable DEBUG
+  debug: false # Turn on debug mode
+
+# Default middleware anchor
+default-middlewares: &default
+  # Access key, it is highly recommended to set the server on the Internet
+  access-token: ''
+  # Event filter file directory
+  filter: ''
+  # API speed limit setting
+  # This setting takes effect globally
+  # Although the original cqhttp has the rate_limit suffix enabled, it basically does not have plugin adaptation
+  # At present, the speed limit is set to the token bucket algorithm, please refer to:
+  # https://baike.baidu.com/item/%E4%BB%A4%E7%89%8C%E6%A1%B6%E7%AE%97%E6%B3%95/6597000?fr=aladdin
+  rate-limit:
+    enabled: false # Whether to enable rate limiting
+    frequency: 1 # token reply frequency, in seconds
+    bucket: 1 # token bucket size
+
+database: # Database-related settings
+  leveldb:
+    # Whether to enable the built-in leveldb database
+    # Enabling will increase the memory footprint by 10-20MB and a certain amount of disk space
+    # Turn off will not be able to use context-sensitive features such as recall reply get_msg
+    enable: true
+  sqlite3:
+    # Whether to enable the built-in sqlite3 database
+    # Enabling will increase the memory footprint and disk space
+    # Turn off will not be able to use context-sensitive features such as recall reply get_msg
+    enable: false
+    cachettl: 3600000000000 # 1h
+
+# List of connected services
+servers:
+  # Add method, the same connection method can be added multiple, please see the document for specific configuration instructions
+  #- http: # http communication
+  #- ws: # Forward Websocket
+  #- ws-reverse: # reverse Websocket
+  #- pprof: # Performance Analysis Server
+
+  - http: # HTTP communication settings
+      address: 0.0.0.0:5700 # HTTP listening address
+      version: 11 # OneBot protocol version, supports 11/12
+      timeout: 5 # Reverse HTTP timeout, in seconds, is ignored at <5
+      long-polling: # Long polling extension
+        enabled: false # Whether it is on
+        max-queue-size: 2000 # Message queue size, 0 means unlimited queue size, use with caution
+      middlewares:
+        <<: *default # references the default middleware
+      post: # Reverse HTTP POST address list
+       - url: 'http://127.0.0.1:5701/' # address
+         secret: '' # key
+         max-retries: 3 # Maximum retries, disabled at 0
+      #  retries-interval: 2 # Retry time, in milliseconds, immediate at 0
+      #- URL: http://127.0.0.1:5701/ # address
+      # secret: '' # key
+      # max-retries: 10 # Maximum retries, disabled at 0
+      # retries-interval: 1000 # Retry time, in milliseconds, immediate at 0
