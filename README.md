@@ -6,7 +6,7 @@
 
 ## 使用
 
-1. [从Github下载](https://github.com/XiuhengWu/QQ-message-bomb/releases/tag/v1.0)或[从云盘下载](https://www.123pan.com/s/ArpbVv-ELdxh.html)包含可执行文件的zip，然后解压
+1. [从Github下载](https://github.com/XiuhengWu/QQ-message-bomb/releases/tag/v1.0)或[从云盘下载](https://www.123pan.com/s/ArpbVv-ELdxh.html) Release版本，然后**解压**
 2. 进入解压后的文件夹，双击“点我启动.vbs”![](https://img1.imgtp.com/2023/07/16/wd8evcIn.png)
 3. 按提示输入你的QQ号![](https://img1.imgtp.com/2023/07/16/qx5zQdBA.png)
 4. 弹出二维码，按住“Ctrl”键，用鼠标滚轮调整二维码大小，然后用手机QQ扫码登陆![](https://img1.imgtp.com/2023/07/16/jDMKNMf3.jpg)
