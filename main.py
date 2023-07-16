@@ -24,8 +24,6 @@ if lines[3] == "  uin: N/A # QQ account\n":  # QQ号未配置
     display.showinfo("检测到账号信息未配置，将自动进入引导配置步骤")
     ChangeAccountOptions()
     StartBotForTheFirstTime()
-    with open("../status", "w") as file:
-        file.write("1")
     display.showinfo("请重新启动本程序")
     os.system("pause")
     sys.exit(0)
