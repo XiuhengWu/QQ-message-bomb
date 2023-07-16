@@ -1,7 +1,7 @@
 # go-cqhttp Default profile
 
 account: # Account related
-  uin: 3410140044 # QQ account
+  uin: N/A # QQ account
   password: '' # If the password is empty, use Scan QR code to log in
   encrypt: false  # Whether to enable password encryption
   status: 0      #  Online Status  Refer to https://docs.go-cqhttp.org/guide/config.html # Online status
