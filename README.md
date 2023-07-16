@@ -1,4 +1,4 @@
-# 基于go-cqhttp的QQ短信消息器
+# 基于go-cqhttp的QQ消息轰炸器
 
 ## 介绍
 
