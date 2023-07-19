@@ -6,7 +6,8 @@
 
 ## 使用
 ### 视频教程：
-<iframe src="//player.bilibili.com/player.html?bvid=BV1Vh4y1L7Ky&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="1280px" height="720px"> </iframe>
+<https://www.bilibili.com/video/BV1Vh4y1L7Ky/>
+
 ### 图文教程：
 1. [从Github下载](https://github.com/XiuhengWu/QQ-message-bomb/releases/tag/v1.0)或[从123云盘下载](https://www.123pan.com/s/ArpbVv-ELdxh.html) Release版本
 2. 右键下载的zip文件，选择**解压**![](https://img1.imgtp.com/2023/07/18/SzXZtOwx.png)
